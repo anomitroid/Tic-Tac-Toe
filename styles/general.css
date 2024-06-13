@@ -1,51 +1,229 @@
-*, *::before, *::after {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --thistle: #cdb4dbff;
+	--fairy-tale: #ffc8ddff;
+	--carnation-pink: #ffafccff;
+	--uranian-blue: #bde0feff;
+	--light-sky-blue: #a2d2ffff;
+}
+
+* {
     box-sizing: border-box;
-    text-decoration: none;
     margin: 0;
     padding: 0;
 }
 
-.page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+html, body {
+    height: 100%;
+    font-family: Monsterrat, sans-serif;
+    color: var(--thistle);
 }
 
-.grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50vw;
-    height: 50vw;
+header {
+    margin: 50px auto;
 }
 
-.box-container {
-    border-collapse: collapse;
-    width: 50%;
-    height: 50%;
-    table-layout: fixed;
-}
-
-.box {
-    border: 1px solid black;
+h1 {
+    margin: 0 auto;
     text-align: center;
+    font-size: 50px;
 }
 
-table tr:first-child td {
-    border-top: 0;
+.player-info {
+    width: 80%;
+    margin: 60px auto;
+    position: relative;
 }
 
-table tr:last-child td {
-    border-bottom: 0;
+h2 {
+    display: inline-block;
+    font-size: 28px;
+    color: var(--light-sky-blue);
 }
 
-table tr td:first-child {
-    border-left: 0;
+.computer {
+    position: absolute;
+    left: 70%;
 }
 
-table tr td:last-child {
-    border-right: 0;
+.grid-container {
+    display: grid;
+    margin: 0 auto;
+    width: 455px;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    grid-gap: 3px;
+    background-color: var(--fairy-tale);
+	backdrop-filter: blur(10px); 
+    border-radius: 10px; 
 }
 
+.grid-container > button {
+    border: 1px dashed var(--thistle);
+    outline: none;
+    cursor: pointer;
+	border-radius: 10px;
+    background-color: var(--fairy-tale);
+    color: var(--thistle);
+    font-size: 80px;
+    transition: background-color 0.3s;
+}
+
+.grid-container > button:hover {
+    background-color: var(--thistle);
+}
+
+span {
+    font-size: 25px;
+    color: var(--carnation-pink);
+}
+
+#player {
+    padding: 0 2px;
+}
+
+#computer {
+	padding: 0 2px;
+}
+
+.modal-bg {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: var(--uranian-blue);
+}
+
+.modal-content {
+    background-color: var(--uranian-blue);
+    margin: 40% auto;
+    width: 60%;
+    height: 60%;
+    color: var(--thistle);
+    border-radius: 20px;
+    position: relative;
+}
+
+.modal-content > h1 {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 20%;
+    color: var(--carnation-pink);
+    font-size: 36px;
+}
+
+#restart {
+    display: block;
+    width: 70%;
+    height: 50px;
+    font-size: 20px;
+    outline: none;
+    border: 3px solid var(--light-sky-blue);
+    border-radius: 25px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background-color: var(--light-sky-blue);
+    font-weight: bold;
+    font-size: 24px;
+    position: absolute;
+    color: var(--thistle);
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: width 0.5s ease-in;
+}
+
+#restart:hover {
+    animation-name: restart;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes restart {
+    0% {}
+    100% { width: 80%; }
+}
+
+@keyframes restart-responsive {
+    0% {}
+    100% { width: 80%; }
+}
+
+@keyframes text {
+    0% { font-size: 0px; }
+    100% { font-size: 80px; }
+}
+
+@media screen and (min-width: 750px) {
+    .player-info {
+        width: 58%;
+    }
+
+    h1 {
+        letter-spacing: 1px;
+        font-size: 42px;
+    }
+
+    .player {
+        padding-left: 10px;
+    }
+
+    .computer {
+        left: 70%;
+    }
+
+    .modal-content {
+        width: 35%;
+        height: 40%;
+        margin-top: 28%;
+    }
+
+    #restart:hover {
+        animation-name: restart-responsive;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .player-info {
+        width: 40%;
+    }
+
+    .modal-content {
+        width: 28%;
+        margin-top: 21%;
+    }
+
+    #restart:hover {
+        animation-name: restart-responsive;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .player {
+        padding-left: 35px;
+    }
+
+    .player-info {
+        width: 35%;
+    }
+
+    .modal-content {
+        width: 22%;
+        height: 40%;
+        margin-top: 17%;
+    }
+
+    #restart:hover {
+        animation-name: restart-responsive;
+    }
+}
